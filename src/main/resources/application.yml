@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    root: INFO
+    gt.eg.ldapvalidatorservice.core.SoapLdapClient: DEBUG
+    gt.eg.ldapvalidatorservice.hr: DEBUG
+    gt.eg.ldapvalidatorservice.api: INFO
+
+ldapSoap:
+  endpointUrl: "https://172.22.90.181:9076/ValidacionUsuarios/BuscaUsuarioWsService"
+  connectTimeoutMs: 5000
+  readTimeoutMs: 8000
+  mock:
+    enabled: true
+
+hr:
+  api:
+    token: "kUnSeIu*oMJC(Nx5L%7X)KyxO"
+
+ssl:
+  devTrustAll: true
+  truststore:
+    enabled: false
+    path: "classpath:truststore.jks"
+    password: "changeit"

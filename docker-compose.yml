@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  ldap-validator-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ldap-validator-service
+    ports:
+      - "8081:8081"
+    environment:
+      # Ajusta memoria JVM si lo necesitas
+      - JAVA_OPTS=-Xms256m -Xmx512m
+      # Perfil Spring (el proyecto actualmente usa default)
+      - SPRING_PROFILES_ACTIVE=default
+    restart: unless-stopped
+    # Nota: healthcheck no incluido porque la imagen base no trae curl/wget.
+    # Para agregarlo, instala curl en el Dockerfile y descomenta:
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8081/ldap/health"]
+    #   interval: 30s
+    #   timeout: 5s
+    #   retries: 3
+    #   start_period: 20s
+
+# Uso:
+# 1. mvn -DskipTests package
+# 2. docker compose up --build -d
+# 3. docker compose logs -f
+# 4. docker compose down
+
