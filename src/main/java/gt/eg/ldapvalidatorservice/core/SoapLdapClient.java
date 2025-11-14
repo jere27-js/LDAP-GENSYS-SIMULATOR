@@ -36,8 +36,9 @@ public class SoapLdapClient {
     public String validate(String username, String password) {
         log.debug("Iniciando validación SOAP para usuario '{}', mockEnabled={}", username, mockEnabled);
         if (mockEnabled) {
-            // Simulación: usuario/contraseña específicos devuelven éxito, el resto falla
-            if ("jeremy.lopez".equals(username) && "abc123".equals(password)) {
+            // Simulación: usuarios/contraseñas específicos devuelven éxito, el resto falla
+            if (("jeremy.lopez".equals(username) || "carlos.archila".equals(username))
+                    && "abc123".equals(password)) {
                 log.info("Validación MOCK exitosa para usuario '{}': devuelve 1", username);
                 return "1"; // éxito
             }

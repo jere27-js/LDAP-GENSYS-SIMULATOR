@@ -18,6 +18,15 @@ class SoapLdapClientMockTest {
     }
 
     @Test
+    @DisplayName("Modo mock: carlos.archila también válido con abc123")
+    void mockModeCarlosArchilaValid() {
+        RestTemplate rt = new RestTemplate();
+        SoapLdapClient client = new SoapLdapClient(rt, "http://no-usado", true);
+        String r = client.validate("carlos.archila", "abc123");
+        assertEquals("1", r);
+    }
+
+    @Test
     @DisplayName("Modo mock: credenciales incorrectas devuelven '0'")
     void mockModeInvalidCredentials() {
         RestTemplate rt = new RestTemplate();
