@@ -49,6 +49,6 @@ public class LdapController {
     @GetMapping(value = "/health", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> health() {
         log.debug("Health check solicitado");
-        return ResponseEntity.ok("Todo OK");
+        return ResponseEntity.ok("UP");
     }
 }
